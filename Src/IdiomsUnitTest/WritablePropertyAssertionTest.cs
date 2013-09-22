@@ -112,5 +112,18 @@ namespace Ploeh.AutoFixture.IdiomsUnitTest
                 sut.Verify(propertyInfo));
             // Teardown
         }
+
+        [Fact]
+        public void VerifyWellBehavedWritableArrayPropertyDoesNotThrow2() {
+          // Fixture setup
+          var composer = new Fixture();
+          var sut = new WritablePropertyAssertion(composer);
+
+          var propertyInfo = typeof(PropertyHolder<byte[]>).GetProperty("Property");
+          // Exercise system and verify outcome
+          Assert.DoesNotThrow(() =>
+              sut.Verify(propertyInfo));
+          // Teardown
+        }
     }
 }
